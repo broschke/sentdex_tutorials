@@ -6,10 +6,11 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 from matplotlib import style
 import datetime
+from api_key import key
 
 style.use('ggplot')
 
-df = quandl.get("WIKI/GOOGL")
+df = quandl.get("WIKI/GOOGL", api_key=key)
 df = df[['Adj. Open',  'Adj. High',  'Adj. Low',  'Adj. Close', 'Adj. Volume']]
 df['HL_PCT'] = (df['Adj. High'] - df['Adj. Low']) / df['Adj. Close'] * 100.0
 df['PCT_change'] = (df['Adj. Close'] - df['Adj. Open']) / df['Adj. Open'] * 100.0
